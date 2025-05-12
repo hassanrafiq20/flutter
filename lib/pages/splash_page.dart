@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter_ecomerce/screens/home_page.dart';
+import 'package:flutter_ecomerce/screens/login_page.dart';
 
 
 
@@ -60,7 +61,7 @@ class _SplashPageState extends State<SplashPage> {
       const Duration(seconds: 4),
           () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const LoginPage()),
       ),
     );
   }

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "457521683491",
+    "firebase_url": "https://batch2307d-53443-default-rtdb.firebaseio.com",
+    "project_id": "batch2307d-53443",
+    "storage_bucket": "batch2307d-53443.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457521683491:android:963f26d1b77c12c4176596",
+        "android_client_info": {
+          "package_name": "com.student2307d.flutter_ecomerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0IxanQpUHJsRS5cBAq-mVOzPYW7jJ0hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecomerce/pages/register_page.dart';
 import 'package:flutter_ecomerce/services/authentication.dart';
 import 'package:flutter_ecomerce/services/validate.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-  static const String routeName = '/LoginPage';
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
+class _RegisterPageState extends State<RegisterPage> {
+    final _formKey = GlobalKey<FormState>();
   final emailCntrl = TextEditingController();
   final passCntrl = TextEditingController();
 
@@ -20,17 +19,11 @@ class _LoginPageState extends State<LoginPage> {
   String? pass="";
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login Page'),),
+      appBar: AppBar(title: Text("Register Page"),),
 
-      body: Container(
+            body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage('assets/media/backgrounds/phoenix_02.jpg'),
               fit: BoxFit.fill
@@ -87,14 +80,14 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(height: 10,),
                           SizedBox(
                             width: MediaQuery.of(context).size.width,
-                            child: ElevatedButton(onPressed: _loginUser, child: Text('Login')),
+                            child: ElevatedButton(onPressed: _signUpUser, child: Text('Sign Up')),
                           ),
                           const SizedBox(height: 10,),
                           SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(onPressed: (){
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const RegisterPage()));
-                            }, child: Text('Register')),
+                              Navigator.pushReplacementNamed(context, "/LoginPage");
+                            }, child: Text('Login')),
                           ),
                         ],
                         ),
@@ -106,20 +99,24 @@ class _LoginPageState extends State<LoginPage> {
           )
           ),
       ),
+
+
     );
   }
 
-  void _loginUser(){
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-       //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Check")));
-      AuthenticationHelper().signIn(email: email.toString(), password: pass.toString()).then((result){
-        if(result==null){
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("You are authenticated")));
-          Navigator.pushReplacementNamed(context, "/HomePage");
+void _signUpUser()async{
+  if(_formKey.currentState!.validate()){
+    _formKey.currentState!.save();
 
+    AuthenticationHelper().signUp(email: email.toString(), password: pass.toString()).then((result) async {
+        if(result==null){
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Created")));
+           Navigator.pushReplacementNamed(context, "/LoginPage");
         }
-      });
-    }
+    });
+
   }
+}
+
+
 }
